@@ -18,7 +18,7 @@ namespace SocieteTableau
 
             Directeur d1 = new Directeur("Akihiko", "Kayaba", 30, 7000, "IA", "THE SEED");
 
-            List<Personne> perosnneList = new List<Personne>()
+            List<Personne> personneList = new List<Personne>()
             {
                 e1,
                 e2,
@@ -30,16 +30,16 @@ namespace SocieteTableau
                 d1
             };
 
-            for (int i = 0; i <= perosnneList.Count - 1; i++)
+            for (int i = 0; i <= personneList.Count - 1; i++)
             {
-                perosnneList[i].Afficher();
+                personneList[i].Afficher();
             }
 
-            perosnneList[0]++;
+            personneList[0]++;
             c1.Salaire += 500;
             c2.Service = "DEFENSE";
 
-            foreach (var personne in perosnneList)
+            foreach (var personne in personneList)
             {
                 personne.Afficher();
             }
