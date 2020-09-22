@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Personnes
 {
     public class Personne : IDisposable
     {
-        private string _nom;
-        private string _prenom;
-        private int _age;
+        private readonly string _nom;
+        private readonly string _prenom;
+        private readonly int _age;
 
         private static int nb = 0;
         private bool disposedValue;
@@ -21,7 +19,10 @@ namespace Personnes
             nb++;
         }
 
-        public override string ToString() => $"Nom : {_nom}, Prenom : {_prenom}, Quantite : {_age}";
+        public override string ToString()
+        {
+            return $"Nom : {_nom}, Prenom : {_prenom}, Quantite : {_age}";
+        }
 
         public void Afficher()
         {
