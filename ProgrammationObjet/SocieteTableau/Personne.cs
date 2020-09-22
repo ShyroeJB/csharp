@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SocieteTableau
 {
@@ -22,7 +20,10 @@ namespace SocieteTableau
             Age = age;
         }
 
-        public override string ToString() => $"Nom : {Nom}, Prenom : {Prenom}, Age : {Age}";
+        public override string ToString()
+        {
+            return $"Nom : {Nom}, Prenom : {Prenom}, Age : {Age}";
+        }
 
         public void Afficher()
         {
