@@ -21,7 +21,7 @@ namespace Personnes
 
         public override string ToString()
         {
-            return $"Nom : {_nom}, Prenom : {_prenom}, Quantite : {_age}";
+            return $"Nom : {_nom}, Prenom : {_prenom}, Age : {_age}";
         }
 
         public void Afficher()
