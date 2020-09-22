@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{4A29382A-58FB-4459-8E16-69D2A286EA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Article", "Article\Article.csproj", "{48FFB104-A886-44DD-AFB4-F9A1F6338D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Article", "Article\Article.csproj", "{48FFB104-A886-44DD-AFB4-F9A1F6338D15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleType", "ArticleType\ArticleType.csproj", "{6F3981A6-D8D4-43CC-A919-011E859D38F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleType", "ArticleType\ArticleType.csproj", "{6F3981A6-D8D4-43CC-A919-011E859D38F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleTableau", "ArticleTableau\ArticleTableau.csproj", "{A25650B2-F315-4D6F-BDC4-C1849AC7FDE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6F3981A6-D8D4-43CC-A919-011E859D38F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F3981A6-D8D4-43CC-A919-011E859D38F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F3981A6-D8D4-43CC-A919-011E859D38F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25650B2-F315-4D6F-BDC4-C1849AC7FDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25650B2-F315-4D6F-BDC4-C1849AC7FDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25650B2-F315-4D6F-BDC4-C1849AC7FDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25650B2-F315-4D6F-BDC4-C1849AC7FDE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
