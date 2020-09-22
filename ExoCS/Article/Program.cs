@@ -6,7 +6,6 @@ namespace Article
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             Article a1 = new Article("test", 10, 2);
             Article a2 = new Article("test2", 10, 15);
 
