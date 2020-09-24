@@ -1,44 +1,89 @@
-﻿namespace ListeChainee
+﻿using System;
+
+namespace ListeChainee
 {
     public class Liste
     {
         private Element _debut;
-        private int _nbElement;
 
-        public int NbElement
+        public int NbElement { get; private set; }
+
+        public Element this[int index]
         {
-            get => _nbElement;
+            get
+            {
+                if (index > NbElement)
+                {
+                    throw new Exception("Out the limits.");
+                }
+                Element actual = _debut;
+                for (int i = 0; i < index; i++)
+                {
+                    actual = actual.Suivant;
+                }
+                return actual;
+            }
         }
 
         public Liste()
         {
-            _nbElement = 0;
+            NbElement = 0;
             _debut = null;
         }
 
-        public void InsererDebut(Element objet)
+        public void InsererDebut(object objet)
         {
-            _debut = objet;
+            Element element = new Element(objet);
+
+            if (_debut == null)
+            {
+                _debut = element;
+                return;
+            }
+
+            Element temp = _debut;
+            _debut = element;
+            _debut.Suivant = temp;
+            NbElement++;
         }
 
-        public void InsererFin(Element objet)
+        public void InsererFin(object objet)
         {
-            while (_debut.Suivant != null)
+            Element element = new Element(objet);
+            if (_debut == null)
             {
-                _debut = _debut.Suivant;
+                _debut = element;
+                return;
             }
-            _debut.Suivant = objet;
-            _nbElement++;
+
+            Element actual = _debut;
+            while (actual.Suivant != null)
+            {
+                actual = actual.Suivant;
+            }
+
+            actual.Suivant = element;
+            NbElement++;
+        }
+
+        public void Lister()
+        {
+            Element actual = _debut;
+            if (_debut != null)
+            {
+                while (actual.Suivant != null)
+                {
+                    Console.WriteLine(actual.ToString());
+                    actual = actual.Suivant;
+                }
+                Console.WriteLine(actual.ToString());
+            }
         }
 
         public void Vider()
         {
-            while (_debut.Suivant != null)
-            {
-                _debut = _debut.Suivant;
-                
-            }
-
+            _debut = null;
+            NbElement = 0;
         }
     }
 }
