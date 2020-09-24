@@ -49,8 +49,6 @@ namespace SocieteListe
             Console.WriteLine("\nListe Element\n");
             Console.WriteLine(liste[0]);
             Console.WriteLine(liste[7]);
-
-            
         }
     }
 }

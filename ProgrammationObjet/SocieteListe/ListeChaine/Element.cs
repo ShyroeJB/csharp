@@ -1,6 +1,8 @@
-﻿namespace ListeChainee
+﻿using System;
+
+namespace ListeChainee
 {
-    public class Element
+    public class Element : IDisposable
     {
         public object Objet { get; set; }
         public Element Suivant { get; set; }
@@ -12,5 +14,11 @@
         }
 
         public override string ToString() => $"{Objet}";
+
+        public void Dispose()
+        {
+            Objet = null;
+            Suivant = null;
+        }
     }
 }

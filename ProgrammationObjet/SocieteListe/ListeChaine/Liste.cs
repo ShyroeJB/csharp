@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ListeChainee
 {
@@ -82,6 +83,17 @@ namespace ListeChainee
 
         public void Vider()
         {
+            List<Element> vider = new List<Element>();
+            Element actual = _debut;
+            while (actual.Suivant != null)
+            {
+                vider.Add(actual);
+                actual = actual.Suivant;
+            }
+            foreach(var vide in vider)
+            {
+                vide.Dispose();
+            }
             _debut = null;
             NbElement = 0;
         }
