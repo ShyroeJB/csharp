@@ -31,25 +31,26 @@ namespace SocieteListe
             liste.InsererDebut(d1);
             liste.Lister();
 
+            Console.WriteLine("\nListe Vider\n");
+            liste.Vider();
+            liste.Lister();
+
             Console.WriteLine("\nListe 2\n");
-            Liste liste2 = new Liste();
-            liste2.InsererFin(e1);
-            liste2.InsererFin(e2);
-            liste2.InsererFin(e3);
-            liste2.InsererFin(e4);
-            liste2.InsererFin(e5);
-            liste2.InsererFin(c1);
-            liste2.InsererFin(c2);
-            liste2.InsererFin(d1);
-            liste2.Lister();
+            liste.InsererFin(e1);
+            liste.InsererFin(e2);
+            liste.InsererFin(e3);
+            liste.InsererFin(e4);
+            liste.InsererFin(e5);
+            liste.InsererFin(c1);
+            liste.InsererFin(c2);
+            liste.InsererFin(d1);
+            liste.Lister();
 
             Console.WriteLine("\nListe Element\n");
             Console.WriteLine(liste[0]);
-            Console.WriteLine(liste[6]);
+            Console.WriteLine(liste[7]);
 
-            Console.WriteLine("\nListe Vider\n");
-            liste2.Vider();
-            liste2.Lister();
+            
         }
     }
 }
