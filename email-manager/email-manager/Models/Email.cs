@@ -7,6 +7,8 @@ namespace email_manager.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
+        public string Object { get; set; }
+        public string Expeditor { get; set; }
 
         public List<Campaign> Campaigns { get; set; }
     }

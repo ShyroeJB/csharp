@@ -54,7 +54,7 @@ namespace email_manager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Content")] Email email)
+        public async Task<IActionResult> Create([Bind("Id,Name,Content,Object,Expeditor")] Email email)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace email_manager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Content")] Email email)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Content,Object,Expeditor")] Email email)
         {
             if (id != email.Id)
             {
