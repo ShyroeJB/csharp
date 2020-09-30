@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using email_manager.Contexts;
 
 namespace email_manager.Migrations
 {
     [DbContext(typeof(EmailManagerContext))]
-    partial class EmailManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20200930145132_AddCampaignContact")]
+    partial class AddCampaignContact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

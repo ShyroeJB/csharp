@@ -9,6 +9,6 @@ namespace email_manager.Models
         public string LastName { get; set; }
         public string EmailAdress { get; set; }
 
-        public List<Campaign> Campaigns { get; set; }
+        public List<CampaignContact> CampaignContacts { get; set; }
     }
 }

@@ -15,12 +15,6 @@ namespace email_manager.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contact>()
-                .HasMany(c => c.Campaigns);
-
-            modelBuilder.Entity<Campaign>()
-                .HasMany(c => c.Contacts);
-
             modelBuilder.Entity<CampaignStatus>()
                 .HasMany(cs => cs.Campaigns);
 
@@ -30,9 +24,22 @@ namespace email_manager.Contexts
                 .HasForeignKey(c => c.EmailId);
 
             modelBuilder.Entity<Campaign>()
-               .HasOne(c => c.CampaignStatus)
-               .WithMany(cs => cs.Campaigns)
-               .HasForeignKey(c => c.CampaingStatusId);
+                .HasOne(c => c.CampaignStatus)
+                .WithMany(cs => cs.Campaigns)
+                .HasForeignKey(c => c.CampaingStatusId);
+
+            modelBuilder.Entity<CampaignContact>()
+                .HasKey(cc => new { cc.CampaignId, cc.ContactId });
+
+            modelBuilder.Entity<CampaignContact>()
+                .HasOne(cc => cc.Campaign)
+                .WithMany(c => c.CampaignContacts)
+                .HasForeignKey(cc => cc.CampaignId);
+
+            modelBuilder.Entity<CampaignContact>()
+               .HasOne(cc => cc.Contact)
+               .WithMany(c => c.CampaignContacts)
+               .HasForeignKey(cc => cc.ContactId);
         }
     }
 }
