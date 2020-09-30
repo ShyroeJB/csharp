@@ -10,6 +10,7 @@ namespace email_manager.Contexts
 
         public DbSet<Campaign> Campaign { get; set; }
         public DbSet<CampaignStatus> CampaignStatus { get; set; }
+        public DbSet<CampaignContact> CampaignContact { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Email> Email { get; set; }
 

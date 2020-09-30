@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using email_manager.Contexts;
 using email_manager.Models;
+using email_manager.ViewModels;
 
 namespace email_manager.Controllers
 {
@@ -49,8 +50,8 @@ namespace email_manager.Controllers
         // GET: Campaigns/Create
         public IActionResult Create()
         {
-            ViewData["CampaingStatusId"] = new SelectList(_context.CampaignStatus, "Id", "Id");
             ViewData["EmailId"] = new SelectList(_context.Email, "Id", "Id");
+            ViewData["ContactsEmailAdress"] = new MultiSelectList(_context.Contact, "EmailAdress", "EmailAdress");
             return View();
         }
 
@@ -59,17 +60,59 @@ namespace email_manager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CampaingStatusId,EmailId")] Campaign campaign)
+        public async Task<IActionResult> Create([Bind("Name,EmailId,EmailName,EmailContent,EmailObject,EmailExpeditor,ContactsEmailAdress")] CampaignDto campaignDto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(campaign);
+                int emailId = 0;
+                if (!string.IsNullOrEmpty(campaignDto.EmailName))
+                {
+                    Email email = new Email()
+                    {
+                        Name = campaignDto.EmailName,
+                        Content = campaignDto.EmailContent,
+                        Object = campaignDto.EmailObject,
+                        Expeditor = campaignDto.EmailExpeditor
+                    };
+                    _context.Email.Add(email);
+                    await _context.SaveChangesAsync();
+                    var emailSaved = _context.Email.FirstOrDefault(e => e.Name.Equals(email.Name));
+                    emailId = emailSaved.Id;
+                }
+                else
+                {
+                    emailId = (int)campaignDto.EmailId;
+                }
+
+                Campaign campaign = new Campaign()
+                {
+                    Name = campaignDto.Name,
+                    EmailId = emailId,
+                };
+
+                var createdStatus = _context.CampaignStatus.FirstOrDefault(s => s.Name.Equals("Created"));
+                campaign.CampaingStatusId = createdStatus.Id;
+
+                _context.Campaign.Add(campaign);
+
+                await _context.SaveChangesAsync();
+
+                foreach (var item in campaignDto.ContactsEmailAdress)
+                {
+                    var contact = _context.Contact.FirstOrDefault(s => s.EmailAdress.Equals(item));
+                    var campaignSaved = _context.Campaign.FirstOrDefault(c => c.Name.Equals(campaign.Name));
+                    var campaignContact = new CampaignContact()
+                    {
+                        ContactId = contact.Id,
+                        CampaignId = campaignSaved.Id
+                    };
+                    _context.CampaignContact.Add(campaignContact);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CampaingStatusId"] = new SelectList(_context.CampaignStatus, "Id", "Id", campaign.CampaingStatusId);
-            ViewData["EmailId"] = new SelectList(_context.Email, "Id", "Id", campaign.EmailId);
-            return View(campaign);
+            ViewData["EmailId"] = new SelectList(_context.Email, "Id", "Id", campaignDto.EmailId);
+            return View(campaignDto);
         }
 
         // GET: Campaigns/Edit/5
